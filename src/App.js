@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./App.css"
 
-import DisplayTweet from './components/tweet/DisplayTweet'
+import Title from './components/title/Title'
+import DisplayTweet from './components/displayTweets/DisplayTweet'
+import Sentiment from './components/sentiment/sentiment'
 
 const App = () => {
   const [keyword, setKeyword] = useState("")
   const [errors, setErrors] = useState(false)
   const [tweets, setTweets] = useState([])
+  const [sentiment, setSentiment] = useState(null)
 
   async function fetchTweets(keyword) {
     const result = await fetch(`http://localhost:4000/api/tweets/${keyword}`)
     result
       .json()
-      .then(result => setTweets(result.tweets))
+      .then(result => {
+        setTweets(result.tweets)
+        setSentiment(result.sentiment)
+      })
       .catch(errors => setErrors(errors))
   }
 
@@ -21,26 +27,27 @@ const App = () => {
   }
 
   const handleSubmit = (event) => {
-    console.log('handleSubmit')
-
-    fetchTweets(keyword)
-
+    if (keyword) {
+      fetchTweets(keyword)
+    }
     event.preventDefault()
   }
 
   return (
     <div className="App">
-      <h1>SenTwitter</h1>
-      <h2>Sentiment analysis on Twitter!</h2>
+      <Title />
       <form onSubmit={handleSubmit}>
         <label>
           Insert the keyword:
           <input type="text" value={keyword} onChange={handleChange} />
         </label>
         <input type="submit" value="SUBMIT!" />
-      </form>      
+      </form>
+
+      <Sentiment sentiment={sentiment}/>
 
       <DisplayTweet tweets={tweets} />
+      {errors}
 
     </div>
   )
