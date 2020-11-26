@@ -4,7 +4,7 @@ const Title = () => {
     return (
         <div>
             <h1>SenTwitter</h1>
-            <h2>Sentiment analysis on Twitter!</h2>
+            <h2>Sentiment Analysis on Twitter!</h2>
         </div>
     )
 }

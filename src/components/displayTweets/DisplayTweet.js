@@ -5,7 +5,9 @@ const DisplayTweet = ({tweets}) => {
 
     return tweets.map((elem, index) =>
         <div className="twitter-container" key={index}>
-          <p>{elem.id}</p>
+          <p>ID: {elem.id}</p>
+          <p>Author: {elem.authorId}</p>
+          <p>Created: {elem.createdAt}</p>
           <p>{elem.text}</p>
         </div>
       )    

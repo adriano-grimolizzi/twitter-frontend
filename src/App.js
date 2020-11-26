@@ -3,7 +3,7 @@ import "./App.css"
 
 import Title from './components/title/Title'
 import DisplayTweet from './components/displayTweets/DisplayTweet'
-import Sentiment from './components/sentiment/sentiment'
+import Sentiment from './components/sentiment/Sentiment'
 
 const App = () => {
   const [keyword, setKeyword] = useState("")
