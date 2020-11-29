@@ -44,7 +44,7 @@ const App = () => {
         <input type="submit" value="SUBMIT!" />
       </form>
 
-      <Sentiment sentiment={sentiment}/>
+      <Sentiment sentiment={sentiment} />
 
       <DisplayTweet tweets={tweets} />
       {errors}
