@@ -17,7 +17,7 @@ const App = () => {
       .json()
       .then(result => {
         setTweets(result.tweets)
-        setSentiment(result.sentiment)
+        setSentiment(result.overallSentiment)
       })
       .catch(errors => setErrors(errors))
   }
